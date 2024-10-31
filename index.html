@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.botframework.com/botframework-webchat/latest/botchat.css"
+    />
+    <!-- Add Bootstrap for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url("assets/bio-rad-image.png");
+        background-size: fit;
+      }
+
+      #chat-container {
+        background-color: #ffffff;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 390px;
+        height: 550px; /* Adjusted for header space */
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      #header {
+        background-color: #008943; /* New green header */
+        color: white;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      #header .title {
+        margin: 0;
+        padding: 0;
+      }
+
+      #header .icon {
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      #bot {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Custom Webchat Styles */
+      .webchat__send-box {
+        border: none; /* Remove outline */
+      }
+
+      .webchat__send-box__input {
+        box-shadow: none !important;
+        border: none !important; /* Remove input box outline */
+      }
+
+      .webchat__bubble--from-user {
+        background-color: #008943 !important; /* Green bubbles */
+        color: white;
+      }
+
+      .webchat__bubble--from-bot {
+        background-color: #f1f1f1;
+        color: black;
+      }
+
+      /* Change all blue to green */
+      .webchat__icon-button {
+        color: #008943 !important;
+      }
+
+      .webchat__icon-button:hover {
+        color: #006f37 !important; /* Darker green on hover */
+      }
+
+      /* Add margin inside the chat box */
+      .webchat__basic-transcript {
+        margin: 10px; /* Add outer spacing to chat content */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Chat container that will hold the bot -->
+    <div id="chat-container">
+      <!-- Green header with chat title on the left and restart icon on the right -->
+      <div id="header">
+        <span class="title">Chat</span>
+        <i class="bi bi-arrow-clockwise icon" onclick="restartConversation()"></i> <!-- Bootstrap restart icon -->
+      </div>
+      <div id="bot">
+        <iframe src='https://webchat.botframework.com/embed/GIT-CAREER-BOT?s=dELTK5VqRG4.JRjBTpg_v8-h1txsCVyjfyz2dqAXDdm-YMjtBUReDqg'  style='min-width: 400px; width: 100%; min-height: 500px;'></iframe>
+      </div>
+    </div>
+
+    <script>
+      // Function to restart conversation by reloading the iframe
+      function restartConversation() {
+        var botFrame = document.getElementById("bot-frame");
+        botFrame.src = botFrame.src; // Reload the iframe to reset the conversation
+      }
+    </script>
+  </body>
+</html>
