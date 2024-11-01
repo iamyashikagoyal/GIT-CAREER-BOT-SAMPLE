@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <link
       rel="stylesheet"
       href="https://cdn.botframework.com/botframework-webchat/latest/botchat.css"
@@ -20,7 +20,7 @@
         margin: 0;
         padding: 0;
         background-image: url("assets/bio-rad-image.png");
-        background-size:;
+        background-size: cover;
         font-family: "Poppins", serif;
       }
 
@@ -55,12 +55,12 @@
 
       .header-wrapper-left {
         display: flex;
-        align-items: center; /* Center "Chat" text vertically with the icon */
+        align-items: center;
       }
 
       #header .title {
         margin: 0;
-        padding: 0 0 0 1rem; /* Padding to create space between icon and text */
+        padding: 0 0 0 1rem;
       }
 
       #header .icon {
@@ -113,52 +113,53 @@
         margin: 10px;
       }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <!-- BOT-WRAPPER -->
     <div id="botWrapper">
-      <div id="header">
-        <div class="header-wrapper-left">
-          <span>
-            <img
-              class="header-icon"
-              src="assets/bot-icon.png"
-              alt="Conversational Bot Icon"
-              style="height: 2rem; width: 2rem"
-            />
-          </span>
-          <span class="title">Chat</span>
+        <div id="header" onclick="toggleBot()">
+            <div class="header-wrapper-left">
+                <span>
+                    <img
+                      class="header-icon"
+                      src="assets/bot-icon.png"
+                      alt="Conversational Bot Icon"
+                      style="height: 2rem; width: 2rem"
+                    />
+                </span>
+                <span class="title">Chat</span>
+            </div>
+            <div class="header-wrapper-right">
+                <i
+                  class="bi bi-arrow-clockwise icon"
+                  onclick="restartConversation(event)"
+                ></i>
+            </div>
         </div>
-        <div class="header-wrapper-right">
-          <i
-            class="bi bi-arrow-clockwise icon"
-            onclick="restartConversation()"
-          ></i>
-        </div>
-      </div>
-      <iframe
-        id="bot-frame"
-        src="https://webchat.botframework.com/embed/GIT-CAREER-BOT?s=dELTK5VqRG4.JRjBTpg_v8-h1txsCVyjfyz2dqAXDdm-YMjtBUReDqg"
-      ></iframe>
+        <iframe
+          id="bot-frame"
+          src="https://webchat.botframework.com/embed/GIT-CAREER-BOT?s=dELTK5VqRG4.JRjBTpg_v8-h1txsCVyjfyz2dqAXDdm-YMjtBUReDqg"
+        ></iframe>
     </div>
 
     <script>
-      document.getElementById("header").addEventListener("click", function () {
+      function toggleBot() {
           const botWrapper = document.getElementById("botWrapper");
           botWrapper.style.height =
               botWrapper.style.height === "550px" ? "58px" : "550px";
-      });
-
-      function generateUniqueUserId() {
-          return 'user_' + Date.now();
       }
 
-      function restartConversation() {
+      function generateUniqueUserId() {
+          return 'user_' + Date.now(); // Create a unique user ID based on the current timestamp
+      }
+
+      function restartConversation(event) {
+          event.stopPropagation(); // Prevent the click from toggling the bot wrapper height
           const botFrame = document.getElementById("bot-frame");
           const uniqueUserId = generateUniqueUserId(); // Generate a new unique user ID
           const botUrl = `https://webchat.botframework.com/embed/GIT-CAREER-BOT?s=dELTK5VqRG4.JRjBTpg_v8-h1txsCVyjfyz2dqAXDdm-YMjtBUReDqg&userId=${uniqueUserId}`;
           botFrame.src = botUrl; // Set the new URL with the unique user ID
       }
     </script>
-  </body>
+</body>
 </html>
