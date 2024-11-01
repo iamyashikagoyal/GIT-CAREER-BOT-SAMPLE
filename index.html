@@ -20,7 +20,7 @@
         margin: 0;
         padding: 0;
         background-image: url("assets/bio-rad-image.png");
-        background-size: fit;
+        background-size:;
         font-family: "Poppins", serif;
       }
 
@@ -144,14 +144,20 @@
 
     <script>
       document.getElementById("header").addEventListener("click", function () {
-        const botWrapper = document.getElementById("botWrapper");
-        botWrapper.style.height =
-          botWrapper.style.height === "550px" ? "58px" : "550px";
+          const botWrapper = document.getElementById("botWrapper");
+          botWrapper.style.height =
+              botWrapper.style.height === "550px" ? "58px" : "550px";
       });
 
+      function generateUniqueUserId() {
+          return 'user_' + Date.now();
+      }
+
       function restartConversation() {
-        const botFrame = document.getElementById("bot-frame");
-        botFrame.src = botFrame.src; // Reloads iframe to restart conversation
+          const botFrame = document.getElementById("bot-frame");
+          const uniqueUserId = generateUniqueUserId(); // Generate a new unique user ID
+          const botUrl = `https://webchat.botframework.com/embed/GIT-CAREER-BOT?s=dELTK5VqRG4.JRjBTpg_v8-h1txsCVyjfyz2dqAXDdm-YMjtBUReDqg&userId=${uniqueUserId}`;
+          botFrame.src = botUrl; // Set the new URL with the unique user ID
       }
     </script>
   </body>
